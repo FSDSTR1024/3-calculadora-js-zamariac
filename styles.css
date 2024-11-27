@@ -52,6 +52,10 @@ body {
   transition: background-color 0.3s ease, transform 0.1s ease-in-out;
 }
 
+/* .button-clicked {
+  opacity: 0.5;
+} */
+
 .button:hover {
   opacity: 0.5;
 }
@@ -65,10 +69,6 @@ body {
   background-color: #FF9500;
   color: white;
 }
-
-/* .operator-orange:hover {
-  background-color: #e58600;
-} */
 
 .zero {
   grid-column: span 2;
