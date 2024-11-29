@@ -9,6 +9,26 @@ const calculatorScreen = document.querySelector('#calculator-screen');
 let buttonsClickedArray = [];
 
 calculatorButtons.addEventListener('click', e =>{
+    // Only calculates two numbers -- more than one set coming soon :)
+    const calculate = () => {
+        num1 = parseFloat(buttonsClickedArray[0]);
+        operator = buttonsClickedArray[1];
+        num2 = parseFloat(buttonsClickedArray[2]);
+        // return console.log('calculate numbers', num1, operator, num2);
+        switch (operator) {
+            case 'sum':
+                return num1 + num2;
+            case 'subtract':
+                return num1 - num2;
+            case 'multiply':
+                return num1 * num2;
+            case 'divide': 
+                return num1 / num2;
+            default:
+                return 'Error';
+        }
+    }
+    
     // click event on all buttons elements
     if (e.target.matches('button')) {
         // check to see if its operator or number using data-attr
@@ -17,6 +37,7 @@ calculatorButtons.addEventListener('click', e =>{
         // Dom manipulation
         const buttonValue = button.textContent;
         const displayNumbers = calculatorScreen.textContent;
+        console.log('im displayNumbers', displayNumbers);
         //check if screen is 0 concat numbers without operators
         if (!operator) {
             console.log('soy un numero!')
@@ -27,10 +48,15 @@ calculatorButtons.addEventListener('click', e =>{
             } 
         } else if (operator === 'decimal') {
             calculatorScreen.textContent = displayNumbers + '.';
+        } else if (operator === 'negative') {
+            calculatorScreen.textContent = displayNumbers * -1;
+        } else if (operator === 'percent') {
+            calculatorScreen.textContent = displayNumbers / 100;
         } else if (operator === 'equal') {
-            console.log('calcular');
             buttonsClickedArray.push(calculatorScreen.textContent);
-            console.log(buttonsClickedArray);
+            const result =  calculate();
+            calculatorScreen.textContent = result;
+            // console.log(buttonsClickedArray);
         } else if (operator === 'clear') {
             calculatorScreen.textContent = '0';
             buttonsClickedArray = [];
@@ -38,8 +64,8 @@ calculatorButtons.addEventListener('click', e =>{
             console.log(operator);
             buttonsClickedArray.push(calculatorScreen.textContent);
             buttonsClickedArray.push(operator);
-            console.log(buttonsClickedArray);
-            calculatorScreen.textContent = '0';
+            // console.log(buttonsClickedArray);
+            calculatorScreen.textContent = '';
         }
     }
 
@@ -47,5 +73,8 @@ calculatorButtons.addEventListener('click', e =>{
 })
 
 
-// Preguntar
+// Future:
 // How would I write this OOP w class/constructs
+// Future more than 2 operand:
+// 3 posiciones en un array 3 x 2 = 6 toma la posicion de [0] 
+// o todo de una operacion, luego PEMDAS.
