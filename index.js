@@ -31,13 +31,13 @@ calculatorButtons.addEventListener('click', e =>{
     
     // click event on all buttons elements
     if (e.target.matches('button')) {
+        
         // check to see if its operator or number using data-attr
         const button = e.target;
         const operator = button.dataset.operator; 
         // Dom manipulation
         const buttonValue = button.textContent;
         const displayNumbers = calculatorScreen.textContent;
-        console.log('im displayNumbers', displayNumbers);
         //check if screen is 0 concat numbers without operators
         if (!operator) {
             console.log('soy un numero!')
@@ -77,4 +77,4 @@ calculatorButtons.addEventListener('click', e =>{
 // How would I write this OOP w class/constructs
 // Future more than 2 operand:
 // 3 posiciones en un array 3 x 2 = 6 toma la posicion de [0] 
-// o todo de una operacion, luego PEMDAS.
+// o todo de una operacion,luego PEMDAS.
